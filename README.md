@@ -1,7 +1,7 @@
 <h1>rolld20</h2>
 
- Uma calculadora de dados desenvolvido tendo como foco jogaroes de RPG. Para ser usado basta escrever a expressão que deseja calcular sem usar espaços e clicar em roll.
- Um dado é representado como <b>ydx</b>, onde x representa qual o tipo de dado e y a quantidade de vezes que a rolagem deve ser feita. Caso x seja 1, ele pode ser omitido.
+<p> Uma calculadora de dados desenvolvida tendo como foco jogaroes de RPG. Para ser usado basta escrever a expressão que deseja calcular sem usar espaços e clicar em roll.</p>
+<p> Cada dado é representado como <b>ydx</b>, onde x representa qual o tipo de dado e y a quantidade de vezes que a rolagem deve ser feita. Caso x seja 1, ele pode ser omitido.</p>
 
 <h2>Exemplo:</h2>
 
