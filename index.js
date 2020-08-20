@@ -3,7 +3,7 @@ let submit = document.querySelector('.input-area_submit');
 
 let output = document.querySelector('.output p');
 
-var initialValue = "1d6+1";
+var initialValue = "";
 input.value = initialValue;
 
 submit.addEventListener('click', setup);
@@ -25,12 +25,12 @@ function setup() {
         return +dice;
     });
     
-    operators = string.match(/[+-]/g);
+    operators = string.match(/[+-]/g) || [];
 
-    console.log(values, operators)
+    //console.log(values, operators)
     
     let expression = arrayIntercale(values, operators).join("");
-    console.log(expression)
+    //console.log(expression)
 
     output.textContent = eval(expression);
     input.value = string || "";
@@ -44,11 +44,11 @@ function arrayIntercale(arr1, arr2, arr3=[]) {
 
     if (arr2.length != 0) arr3.push(arr2.shift());
 
-    return arrayIntercale(arr1, arr2, arr3)
+    return arrayIntercale(arr1, arr2, arr3);
 }
 
 function roll(dice) {
 
-    return Math.ceil(Math.random() * dice.split('d')[1]) * dice.split('d')[0];
+    return Math.ceil(Math.random() * (dice.split('d')[1])) * (dice.split('d')[0] || 1);
 }
 

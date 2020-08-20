@@ -46,6 +46,10 @@ body {
     background: #cdcdcd;
     padding: 10px;
     margin-left: none;
+    -webkit-user-select: none;       
+    -moz-user-select: none; 
+    -ms-user-select: none;
+    user-select: none;    
 }
 
 .input-area_submit:hover {
