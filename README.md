@@ -16,6 +16,6 @@
   <li>Armazena todos as rolagens e valores no array <b>dices</b>;</li>
   <li>Intera por <b>dices</b> com um map resolvendo cada uma das rolagens e as guarda em <b>values</b>;</li>
   <li>Isola no array <b>operators</b> todos os operadores(+,-) usando regex;</li>
-  <li>Intercala os valores de <b>values</b> e <b>operators</b> numa unica string;</li>
+  <li>Intercala os elementos de <b>values</b> e <b>operators</b> numa unica string;</li>
   <li>A string é resolvida usando o metodo eval;</li>
 </ol>
