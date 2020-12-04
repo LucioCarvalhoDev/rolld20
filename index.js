@@ -1,54 +1,63 @@
-let input = document.querySelector('.input-area input');
-let submit = document.querySelector('.input-area_submit');
+let devMode = false;
+(() => {
+    let input = document.querySelector('.input-area input');
+    let submit = document.querySelector('.input-area_submit');
 
-let output = document.querySelector('.output p');
+    let output = document.querySelector('.output p');
 
-var initialValue = "";
-input.value = initialValue;
+    var initialValue = "";
+    input.value = initialValue;
 
-submit.addEventListener('click', setup);
-document.querySelector('body').addEventListener('keydown', event => {
-    
-    event.keyCode == 13 ? setup() : "";
-})
+    submit.addEventListener('click', setup);
+    document.querySelector('body').addEventListener('keydown', event => {
 
-function setup() {
+        event.keyCode == 13 ? setup() : "";
+    })
 
-    let string = input.value;
+    function setup() {
 
-    dices = string.split(/[+-]/);
-    let values = dices.map(dice => {
-        
-        if (/[0-9]*d[0-9]*/.test(dice)) {
-            return roll(dice);
-        }
-        return +dice;
-    });
-    
-    operators = string.match(/[+-]/g) || [];
+        let string = input.value;
 
-    //console.log(values, operators)
-    
-    let expression = arrayIntercale(values, operators).join("");
-    //console.log(expression)
+        dices = string.split(/[+-]/);
+        let values = dices.map(dice => {
 
-    output.textContent = eval(expression);
-    input.value = string || "";
-}
+            if (/[0-9]*d[0-9]*/.test(dice)) {
+                return roll(dice);
+            }
+            return +dice;
+        });
 
-function arrayIntercale(arr1, arr2, arr3=[]) {
-    
-    if (arr1.length == 0) return arr3;
+        operators = string.match(/[+-]/g) || [];
 
-    arr3.push(arr1.shift());
+        devMode && console.log(values, operators)
 
-    if (arr2.length != 0) arr3.push(arr2.shift());
+        let expression = arrayIntercale(values, operators).join("");
+        devMode && console.log(expression)
 
-    return arrayIntercale(arr1, arr2, arr3);
-}
+        output.textContent = eval(expression);
+        input.value = string || "";
+    }
 
-function roll(dice) {
+    function arrayIntercale(arr1, arr2, arr3 = []) {
 
-    return Math.ceil(Math.random() * (dice.split('d')[1])) * (dice.split('d')[0] || 1);
-}
+        if (arr1.length == 0) return arr3;
 
+        arr3.push(arr1.shift());
+
+        if (arr2.length != 0) arr3.push(arr2.shift());
+
+        return arrayIntercale(arr1, arr2, arr3);
+    }
+
+    function roll(dice) {
+
+        return Math.ceil(Math.random() * (dice.split('d')[1])) * (dice.split('d')[0] || 1);
+    }
+})();
+
+console.warn("Para ver o que está acontecendo por dentro insira \"devMode = true\" no console")
+
+console.log("d6 === 1d6");
+console.log("16 => (1 || 2 || 3 ||4 || 5 || 6)");
+console.log("2d2 => (1 || 2) + (1 || 2)");
+console.log("1d4 - 4 => (1 || 2 || 3 || 4) - 4");
